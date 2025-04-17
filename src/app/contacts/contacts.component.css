@@ -1,0 +1,24 @@
+.contacts-card {
+        margin-bottom: 40px;
+        text-align: center;
+        border-radius: 10px;
+        padding: 20px 0;
+        box-shadow: 5px 5px 10px #0a5640;
+    }
+
+        .contacts-card {
+            border-radius: 4px;
+            margin: 10px;
+        }
+
+                .contacts-card .contact-name {
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+        
+                    .contacts-card .contact-number {
+                    max-width: 360px;
+                    margin: 0 auto;
+                    font-size: 1.2rem;
+                    user-select: none;
+                }

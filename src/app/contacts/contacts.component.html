@@ -1,0 +1,17 @@
+<h1 style="font-weight: bold; text-align: center;">Contacts</h1>
+<div class="container mt-4">
+  <div class="row">
+    @for (contact of contacts; track contact) {
+      <div class="col-md-4 mb-3">
+        <div class="card p-3 shadow-sm">
+          <h5 class="card-title">{{ contact.fName }} {{ contact.lName }}</h5>
+          <p class="card-text">Phone: {{ contact.phoneNumber }}</p>
+          <p class="card-text">ID: {{ contact.id }}</p>
+          <a [routerLink]="['/updateContacts', contact.id]" class="btn btn-primary">Edit Contact</a>
+          <button class="btn btn-danger" (click) = deleteContact(contact.id)>Delete Contact</button>
+          
+        </div>
+      </div>
+    }
+  </div>
+</div>
