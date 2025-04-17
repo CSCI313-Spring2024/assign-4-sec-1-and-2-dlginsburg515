@@ -17,7 +17,10 @@ export class ContactsComponent {
   contacts: contact[] = [];
 
   deleteContact(id:number){
-    this.contacts.splice(id, 1)
+    const index = this.contacts.findIndex(c => c.id === id);
+  if (index !== -1) {
+    this.contacts.splice(index, 1);
+  }
   }
   
   ngOnInit(){

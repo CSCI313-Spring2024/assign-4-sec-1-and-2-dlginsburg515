@@ -12,12 +12,17 @@ export class DataService {
   contacts = Contacts;
   
 
-  getContactById(id:number): contact{
-    return this.contacts.find(contact => contact.id === id)!;
+  getContactById(id:number): contact|undefined{
+    return this.contacts.find(contact => contact.id === id);
   }
 
-  updateContact(updated: contact): void {
-    const index = this.contacts.findIndex(c => c.id === updated.id);
-    this.contacts[index] = {...updated};
+ updateContact(updated: contact): void {
+  const index = this.contacts.findIndex(c => c.id === updated.id);
+  if (index !== -1) {
+    this.contacts[index] = { ...updated };
   }
+}
+
+
+
 }

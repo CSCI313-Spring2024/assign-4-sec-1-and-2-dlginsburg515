@@ -2,7 +2,7 @@ import { Component, input, inject } from '@angular/core';
 import { DataService } from '../data.service';
 import { contact } from '../contact';
 import { Contacts } from '../data/contact-data';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -21,13 +21,18 @@ export class UpdateContactsComponent {
 
   temp!: contact
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private route: ActivatedRoute){}
 
 
-  ngOnInit(){
-    const found = this.dataService.getContactById(this.id());
-    this.temp = {... found};
+  ngOnInit() {
+  const id = Number(this.route.snapshot.paramMap.get('id'));
+  const found = this.dataService.getContactById(id);
+  if (found) {
+    this.temp = { ...found };
+  } else {
+    this.router.navigate(['/']); 
   }
+}
 
   saveContact(){
     this.dataService.updateContact(this.temp);
